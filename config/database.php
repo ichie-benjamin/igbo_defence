@@ -66,9 +66,9 @@ return [
         'wordpress' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'mydatabase',
-            'username'  => 'admin',
-            'password'  => 'secret',
+            'database'  => 'igboqcqx_wp116',
+            'username'  => 'igboqcqx_wp116',
+            'password'  => '..16.QS(49Ds.p5w',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => 'wp_',
