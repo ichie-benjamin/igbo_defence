@@ -32,6 +32,8 @@ Route::middleware('splade')->group(function () {
     // Registers routes to support async File Uploads with Filepond...
     Route::spladeUploads();
 
+    Route::get('/posts', [PostController::class, 'index']);
+
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', function () {
@@ -50,7 +52,6 @@ Route::middleware('splade')->group(function () {
 
         Route::group(['prefix' => 'dashboard/'], function () {
 
-            Route::resource('versions', SoftwareVersionController::class);
             Route::resource('videos', VideoController::class);
             Route::resource('shorts', ShortController::class);
             Route::resource('posts', PostController::class)->only('index');
