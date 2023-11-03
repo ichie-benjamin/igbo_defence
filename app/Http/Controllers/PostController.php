@@ -19,7 +19,7 @@ class PostController extends Controller
 //                ->column('thumbnail')
                 ->column('created_at')
 
-                ->column('actions')
+//                ->column('actions')
                 ->paginate(15),
         ]);
     }

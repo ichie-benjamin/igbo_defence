@@ -22,6 +22,10 @@
 {{--                        @endif--}}
 {{--                    </x-splade-cell>--}}
 
+                    <x-splade-cell thumbnail as="$item">
+                        <img height="100px" width="100px" src="{{ $post->thumbnail->size(Corcel\Model\Meta\ThumbnailMeta::SIZE_THUMBNAIL) }}" />
+                    </x-splade-cell>
+
                 </x-splade-table>
             </div>
         </div>
