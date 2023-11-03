@@ -71,7 +71,7 @@ return [
             'password'  => '..16.QS(49Ds.p5w',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => 'wp_',
+            'prefix'    => 'wphw_',
             'strict'    => false,
             'engine'    => null,
         ],
