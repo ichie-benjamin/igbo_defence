@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $post = Post::published()->get();
+        $post = Post::published()->paginate(10);
         return $post;
     }
 }
