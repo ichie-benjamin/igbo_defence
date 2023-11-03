@@ -29,7 +29,7 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('shorts.index')" :active="request()->routeIs('shorts.index')">
+                        <x-nav-link :href="route('shorts.index')" :active="request()->routeIs('posts.index')">
                             News
                         </x-nav-link>
                     </div>
