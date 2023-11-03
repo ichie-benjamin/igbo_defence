@@ -23,9 +23,10 @@
 {{--                    </x-splade-cell>--}}
 
                     <x-splade-cell thumbnail as="$item">
-                        <img height="100px" width="100px" src="{{ $item->thumbnail['url'] }}" />
+                        <img height="100px" width="100px" src="{{ $item->image }}" />
 
-                        {{ $item->thumbnail['url'] }}
+                        {{ $item->image }}
+
                     </x-splade-cell>
 
                 </x-splade-table>
