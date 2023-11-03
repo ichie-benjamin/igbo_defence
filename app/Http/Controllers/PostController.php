@@ -16,7 +16,7 @@ class PostController extends Controller
                 ->withGlobalSearch(columns: ['post_title','post_excerpt'])
                 ->defaultSort('post_title')
                 ->column(key: 'post_title', sortable: true)
-//                ->column('thumbnail')
+                ->column('thumbnail')
                 ->column('created_at')
 
 //                ->column('actions')
