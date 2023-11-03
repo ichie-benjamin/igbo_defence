@@ -23,7 +23,9 @@
 {{--                    </x-splade-cell>--}}
 
                     <x-splade-cell thumbnail as="$item">
-                        <img height="100px" width="100px" src="{{ $item->thumbnail->size(Corcel\Model\Meta\ThumbnailMeta::SIZE_THUMBNAIL)['url'] }}" />
+                        <img height="100px" width="100px" src="{{ $item->thumbnail['url'] }}" />
+
+                        {{ $item->thumbnail['url'] }}
                     </x-splade-cell>
 
                 </x-splade-table>
