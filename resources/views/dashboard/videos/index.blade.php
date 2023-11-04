@@ -33,7 +33,7 @@
                         <Link
                             class="text-red-600 hover:text-red-400 pl-3"
                             confirm="Delete"
-                            confirm-text="Are you sure you want to delete this version?"
+                            confirm-text="Are you sure you want to delete this video?"
                             confirm-button="Delete"
                             cancel-button="Cancel"
                             href="{{ route('videos.destroy', $item) }}" method="DELETE">

@@ -33,7 +33,7 @@
                         <Link
                             class="text-red-600 hover:text-red-400 pl-3"
                             confirm="Delete"
-                            confirm-text="Are you sure you want to delete this version?"
+                            confirm-text="Are you sure you want to delete this short?"
                             confirm-button="Delete"
                             cancel-button="Cancel"
                             href="{{ route('shorts.destroy', $item) }}" method="DELETE">
