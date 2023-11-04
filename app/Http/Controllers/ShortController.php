@@ -80,7 +80,8 @@ class ShortController extends Controller
         return view('dashboard.shorts.edit', compact('short'));
     }
 
-    public function destroy(Short $short){
+    public function destroy($id){
+        $short = Short::findOrFail($id);
         $short->delete();
         Toast::title('Short deleted successfully');
         return redirect()->back();
