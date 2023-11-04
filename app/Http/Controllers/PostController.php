@@ -17,10 +17,10 @@ class PostController extends Controller
                 ->defaultSort('post_title')
                 ->column(key: 'post_title', sortable: true)
                 ->column('thumbnail')
-                ->column('created_at')
+                ->column('created_at', sortable: true)
 
 //                ->column('actions')
-                ->paginate(15),
+                ->paginate(10),
         ]);
     }
     public function all(){

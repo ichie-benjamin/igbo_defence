@@ -91,6 +91,7 @@ class VideoController extends Controller
             'video' => 'required',
             'title' => 'required',
             'description' => 'nullable',
+            'tags' => 'nullable',
         ];
 
         return $request->validate($rules);
