@@ -36,7 +36,7 @@
                             confirm-text="Are you sure you want to delete this short?"
                             confirm-button="Delete"
                             cancel-button="Cancel"
-                            href="{{ route('shorts.destroy', $item) }}" method="DELETE">
+                            href="{{ route('shorts.destroy', $item->id) }}" method="DELETE">
                         Delete
                         </Link>
 
