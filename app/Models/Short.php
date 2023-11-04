@@ -10,6 +10,6 @@ class Short extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['title','user_id','status','description','file'];
+    protected $fillable = ['title','user_id','status','description','file','tags'];
 
 }
