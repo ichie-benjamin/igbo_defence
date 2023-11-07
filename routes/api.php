@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FeedsController;
 use App\Http\Controllers\Api\MainController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'v1/'], function ($router) {
+Route::group(['prefix' => 'v1/'], function () {
+
+    Route::get('feeds', [FeedsController::class, 'feeds']);
+
 
     Route::get('/', [MainController::class, 'index']);
     Route::get('/admin/add/site', [MainController::class, 'addSite'])->name('add.site');
