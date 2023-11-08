@@ -20,7 +20,7 @@ class ShortController extends Controller
                 ->defaultSort('title')
                 ->column(key: 'title', sortable: true)
                 ->column(key: 'tags', sortable: true)
-                ->column(key: 'description')
+//                ->column(key: 'description')
                 ->column('file')
                 ->column('created_at')
 

@@ -12,4 +12,15 @@ class Short extends Model
 
     protected $fillable = ['title','user_id','status','description','file','tags'];
 
+    protected $appends = ['key','video'];
+
+    public function getKeyAttribute()
+    {
+        return $this->id.'_shorts';
+    }
+    public function getVideoAttribute()
+    {
+        return $this->file;
+    }
+
 }

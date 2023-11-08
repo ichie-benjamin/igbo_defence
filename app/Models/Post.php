@@ -10,4 +10,12 @@ class Post extends Corcel
 
     protected $postType = 'post';
 
+    protected $appends = ['key'];
+
+    public function getKeyAttribute()
+    {
+        return $this->ID.'_'.$this->slug;
+    }
+
+
 }
