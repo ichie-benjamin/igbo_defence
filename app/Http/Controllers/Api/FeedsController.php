@@ -20,7 +20,7 @@ class FeedsController extends Controller
         $itemsPerType = 4;
 
         // Paginate each model separately
-        $paginatedPosts = Post::select('post_author','ID','post_date','slug','title','excerpt','image')->latest()->paginate($itemsPerType, ['*'], 'page', $page);
+        $paginatedPosts = Post::select('post_author','ID','post_date','post_title','post_excerpt','image')->latest()->paginate($itemsPerType, ['*'], 'page', $page);
         $paginatedShorts = Short::latest()->paginate($itemsPerType, ['*'], 'page', $page);
         $paginatedVideos = Video::latest()->paginate($itemsPerType, ['*'], 'page', $page);
 
