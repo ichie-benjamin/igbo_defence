@@ -49,4 +49,40 @@ class FeedsController extends Controller
         // Return the data as a JSON response
         return response()->json($data);
     }
+    public function feedsAll(Request $request): JsonResponse
+    {
+
+        $page = $request->input('page', 1);
+        $itemsPerType = 4;
+
+        // Paginate each model separately
+        $paginatedPosts = Post::latest()->paginate($itemsPerType, ['*'], 'page', $page);
+        $paginatedShorts = Short::latest()->paginate($itemsPerType, ['*'], 'page', $page);
+        $paginatedVideos = Video::latest()->paginate($itemsPerType, ['*'], 'page', $page);
+
+        // Construct the response array
+        $data = [
+            'posts' => $paginatedPosts->items(),
+            'shorts' => $paginatedShorts->items(),
+            'videos' => $paginatedVideos->items(),
+            // You may want to include pagination information for each type as well
+            'pagination' => [
+                'posts' => [
+                    'current_page' => $paginatedPosts->currentPage(),
+                    'total_pages' => $paginatedPosts->lastPage(),
+                ],
+                'shorts' => [
+                    'current_page' => $paginatedShorts->currentPage(),
+                    'total_pages' => $paginatedShorts->lastPage(),
+                ],
+                'videos' => [
+                    'current_page' => $paginatedVideos->currentPage(),
+                    'total_pages' => $paginatedVideos->lastPage(),
+                ]
+            ]
+        ];
+
+        // Return the data as a JSON response
+        return response()->json($data);
+    }
 }

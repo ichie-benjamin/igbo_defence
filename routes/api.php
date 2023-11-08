@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1/'], function () {
 
     Route::get('feeds', [FeedsController::class, 'feeds']);
+    Route::get('feeds/all', [FeedsController::class, 'feedsAll']);
 
 
     Route::get('/', [MainController::class, 'index']);
