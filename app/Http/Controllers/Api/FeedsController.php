@@ -49,6 +49,24 @@ class FeedsController extends Controller
         // Return the data as a JSON response
         return response()->json($data);
     }
+    public function shorts(Request $request): JsonResponse
+    {
+
+        $itemsPerType = 5;
+
+        $shorts = Short::latest()->paginate($itemsPerType);
+
+        return response()->json($shorts);
+    }
+    public function videos(Request $request): JsonResponse
+    {
+
+        $itemsPerType = 5;
+
+        $shorts = Video::latest()->paginate($itemsPerType);
+
+        return response()->json($shorts);
+    }
     public function feedsAll(Request $request): JsonResponse
     {
 
