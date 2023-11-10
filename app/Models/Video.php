@@ -13,7 +13,7 @@ class Video extends Model
 
     protected $fillable = ['title','user_id','status','description','video','tags'];
 
-    protected $appends = ['key','created_at_val'];
+    protected $appends = ['key','created_at_ago'];
 
     protected $with = ['user'];
 
