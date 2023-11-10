@@ -24,8 +24,13 @@ Route::group(['prefix' => 'v1/'], function () {
 
     Route::get('feeds', [FeedsController::class, 'feeds']);
     Route::get('feeds/all', [FeedsController::class, 'feedsAll']);
+    Route::get('feeds/all', [FeedsController::class, 'feedsAll']);
     Route::get('feeds/shorts', [FeedsController::class, 'shorts']);
     Route::get('feeds/videos', [FeedsController::class, 'videos']);
+
+    Route::post('shorts/increase/view', [FeedsController::class, 'increaseShortsView']);
+    Route::post('videos/increase/view', [FeedsController::class, 'increaseVideoView']);
+
 
 
     Route::get('/', [MainController::class, 'index']);

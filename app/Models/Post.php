@@ -11,12 +11,25 @@ class Post extends Corcel
 
     protected $postType = 'post';
 
-    protected $appends = ['key'];
+    protected $with = ['thumbnail'];
+
+    protected $appends = ['key','created_at_ago','img'];
 
     public function getKeyAttribute()
     {
         return $this->ID.'_'.\str()->slug($this->post_title);
     }
+
+    public function getImgAttribute()
+    {
+        return $this->thumbnail[0];
+    }
+
+    public function getCreatedAtAgoAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
 
 
 }

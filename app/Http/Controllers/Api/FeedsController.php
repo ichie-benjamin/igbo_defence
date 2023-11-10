@@ -67,6 +67,33 @@ class FeedsController extends Controller
 
         return response()->json($shorts);
     }
+    public function increaseShortsView(Request $request): JsonResponse
+    {
+
+        $id = $request['id'];
+
+        $short = Short::find($id);
+        if($short){
+            $short->views = $short->views + 1;
+            $short->save();
+        }
+
+        return response()->json($short);
+    }
+
+    public function increaseVideoView(Request $request): JsonResponse
+    {
+
+        $id = $request['id'];
+
+        $item = Video::find($id);
+        if($item){
+            $item->views = $item->views + 1;
+            $item->save();
+        }
+
+        return response()->json($item);
+    }
     public function feedsAll(Request $request): JsonResponse
     {
 

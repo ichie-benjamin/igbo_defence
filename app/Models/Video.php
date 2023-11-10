@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Video extends Model
 {
@@ -12,11 +13,22 @@ class Video extends Model
 
     protected $fillable = ['title','user_id','status','description','video','tags'];
 
-    protected $appends = ['key'];
+    protected $appends = ['key','created_at_val'];
+
+    protected $with = ['user'];
+
+    public function getCreatedAtAgoAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
 
     public function getKeyAttribute()
     {
         return $this->id.'_videos';
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
