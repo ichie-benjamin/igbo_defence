@@ -22,7 +22,12 @@ class Post extends Corcel
 
     public function getImgAttribute()
     {
-        return $this->thumbnail;
+        $image = null;
+        $media = $this->thumbnail;
+        if($media->attachment){
+            $image = $media?->attachment?->url;
+        }
+        return $image;
     }
 
     public function getCreatedAtAgoAttribute()
