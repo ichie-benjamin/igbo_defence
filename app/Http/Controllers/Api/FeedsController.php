@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ads;
 use App\Models\Post;
 use App\Models\Short;
 use App\Models\Video;
@@ -23,12 +24,14 @@ class FeedsController extends Controller
         $paginatedPosts = Post::select('post_author','ID','post_date','post_title','post_excerpt')->latest()->paginate($itemsPerType, ['*'], 'page', $page);
         $paginatedShorts = Short::latest()->paginate($itemsPerType, ['*'], 'page', $page);
         $paginatedVideos = Video::latest()->paginate($itemsPerType, ['*'], 'page', $page);
+        $paginatedAds = Ads::latest()->paginate(1, ['*'], 'page', $page);
 
         // Construct the response array
         $data = [
             'posts' => $paginatedPosts->items(),
             'shorts' => $paginatedShorts->items(),
             'videos' => $paginatedVideos->items(),
+            'ads' => $paginatedAds->items(),
             // You may want to include pagination information for each type as well
             'pagination' => [
                 'posts' => [
@@ -42,6 +45,10 @@ class FeedsController extends Controller
                 'videos' => [
                     'current_page' => $paginatedVideos->currentPage(),
                     'total_pages' => $paginatedVideos->lastPage(),
+                ],
+                'ads' => [
+                    'current_page' => $paginatedAds->currentPage(),
+                    'total_pages' => $paginatedAds->lastPage(),
                 ]
             ]
         ];
