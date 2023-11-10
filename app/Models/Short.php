@@ -13,9 +13,14 @@ class Short extends Model
 
     protected $fillable = ['title','user_id','status','description','file','tags'];
 
-    protected $appends = ['key','video','created_at_ago'];
+    protected $appends = ['key','video','created_at_ago','view_count'];
 
     protected $with = ['user'];
+
+    public function getViewCountAttribute()
+    {
+        return $this->views;
+    }
 
     public function getCreatedAtAgoAttribute()
     {

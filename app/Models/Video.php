@@ -13,7 +13,7 @@ class Video extends Model
 
     protected $fillable = ['title','user_id','status','description','video','tags'];
 
-    protected $appends = ['key','created_at_ago'];
+    protected $appends = ['key','created_at_ago','view_count'];
 
     protected $with = ['user'];
 
@@ -25,6 +25,11 @@ class Video extends Model
     public function getKeyAttribute()
     {
         return $this->id.'_videos';
+    }
+
+    public function getViewCountAttribute()
+    {
+        return $this->views;
     }
 
     public function user(): BelongsTo
