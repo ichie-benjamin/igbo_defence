@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $appends = ['avatar'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -34,13 +36,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getAvatarAttribute(){
+        return asset('images/logo.png');
+    }
 }
