@@ -22,7 +22,7 @@ class Post extends Corcel
 
     public function getImgAttribute()
     {
-        $image = null;
+        $image = asset('images/404.png');
         if($this?->thumbnail?->attachment){
             $image = $this?->thumbnail?->attachment?->url;
         }
