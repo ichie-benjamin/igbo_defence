@@ -34,6 +34,7 @@ class FeedsController extends Controller
             'ads' => $paginatedAds->items(),
             // You may want to include pagination information for each type as well
             'pagination' => [
+                'current_page' => $page,
                 'posts' => [
                     'current_page' => $paginatedPosts->currentPage(),
                     'total_pages' => $paginatedPosts->lastPage(),

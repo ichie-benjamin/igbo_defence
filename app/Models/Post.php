@@ -8,10 +8,10 @@ use Psy\Util\Str;
 class Post extends Corcel
 {
     protected $connection = 'wordpress';
-
     protected $postType = 'post';
 
     protected $with = ['thumbnail'];
+
 
     protected $appends = ['key','created_at_ago','img'];
 
