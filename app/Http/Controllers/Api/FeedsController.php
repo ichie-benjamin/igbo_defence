@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ads;
+use App\Models\Live;
 use App\Models\Post;
 use App\Models\Short;
 use App\Models\Video;
@@ -75,6 +76,16 @@ class FeedsController extends Controller
 
         return response()->json($shorts);
     }
+
+    public function lives(): JsonResponse
+    {
+        $itemsPerType = 5;
+
+        $lives = Live::latest()->paginate($itemsPerType);
+
+        return response()->json($lives);
+    }
+
     public function increaseShortsView(Request $request): JsonResponse
     {
 

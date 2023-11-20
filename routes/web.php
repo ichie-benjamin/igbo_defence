@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LiveController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -57,6 +58,7 @@ Route::middleware('splade')->group(function () {
 
             Route::resource('videos', VideoController::class);
             Route::resource('ads', AdsController::class);
+            Route::resource('live', LiveController::class);
             Route::resource('shorts', ShortController::class);
             Route::resource('posts', PostController::class)->only('index');
         });
