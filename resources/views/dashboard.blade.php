@@ -15,8 +15,6 @@
 
             <div class="py-12">
 
-                <Wallet v-model="selectedWallet" :wallets="@js($wallets)"  />
-
             </div>
 
         </div>
