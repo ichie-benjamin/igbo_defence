@@ -11,6 +11,7 @@ use App\Models\Video;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FeedsController extends Controller
@@ -119,6 +120,32 @@ class FeedsController extends Controller
         if($item){
             $item->views = $item->views + 1;
             $item->save();
+        }
+
+        return response()->json($item);
+    }
+    public function increaseLike(Request $request): JsonResponse
+    {
+
+        $type = $request['type'];
+
+        $user = Auth::user();
+
+        $item = null;
+
+        $id = $request['id'];
+
+        if($type == 'shorts'){
+            $item = Short::find($id);
+        }
+
+        if($type == 'videos'){
+            $item = Video::find($id);
+        }
+
+
+        if($item){
+            $user->toggleLike($item);
         }
 
         return response()->json($item);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FeedsController;
 use App\Http\Controllers\Api\MainController;
 use Illuminate\Http\Request;
@@ -21,6 +22,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1/'], function () {
+
+    Route::prefix('auth')->group(function () {
+        Route::post('login', [AuthController::class, 'login']);
+        Route::post('delete/account', [AuthController::class, 'delete']);
+        Route::post('register', [AuthController::class, 'register']);
+
+        Route::post('user', [AuthController::class, 'user']);
+        Route::post('change/password', [AuthController::class, 'changePassword']);
+
+        Route::post('update/online', [AuthController::class, 'setOnline']);
+
+        Route::post('resend/otp', [AuthController::class, 'resendOTP']);
+
+        Route::post('user/update', [AuthController::class, 'update']);
+
+        Route::post('verify/phone', [AuthController::class, 'verifyPhone']);
+
+        Route::post('forgot/pass', [AuthController::class, 'forgotPass']);
+        Route::post('check/phone', [AuthController::class, 'checkPhone']);
+        Route::post('user/update_token', [AuthController::class, 'updateToken']);
+        Route::post('forgot/pass/verify', [AuthController::class, 'verifyResetCode']);
+        Route::post('reset/pass', [AuthController::class, 'resetPass']);
+        Route::post('send/email/verify', [AuthController::class, 'sendVerifyEmail']);
+    });
+
 
     Route::get('feeds', [FeedsController::class, 'feeds']);
     Route::get('feeds/all', [FeedsController::class, 'feedsAll']);
