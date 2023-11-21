@@ -36,8 +36,10 @@ class AuthController extends Controller
     public function register(Request $request): JsonResponse
     {
 
+        $data = $this->getData($request);
+
         try {
-            $data = $this->getData($request);
+
 
             DB::beginTransaction();
 
