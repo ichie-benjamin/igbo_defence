@@ -47,6 +47,11 @@ Route::group(['prefix' => 'v1/'], function () {
         Route::post('send/email/verify', [AuthController::class, 'sendVerifyEmail']);
     });
 
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::post('toggle/like', [FeedsController::class, 'toggleLike']);
+    });
+
+
 
     Route::get('feeds', [FeedsController::class, 'feeds']);
     Route::get('feeds/all', [FeedsController::class, 'feedsAll']);
@@ -56,7 +61,6 @@ Route::group(['prefix' => 'v1/'], function () {
     Route::get('lives', [FeedsController::class, 'lives']);
 
     Route::post('increase/view', [FeedsController::class, 'increaseView']);
-    Route::post('toggle/like', [FeedsController::class, 'toggleLike']);
     Route::post('shorts/increase/view', [FeedsController::class, 'increaseShortsView']);
     Route::post('videos/increase/view', [FeedsController::class, 'increaseVideoView']);
 
