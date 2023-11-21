@@ -100,6 +100,30 @@ class FeedsController extends Controller
         return response()->json($short);
     }
 
+    public function increaseView(Request $request): JsonResponse
+    {
+
+        $type = $request['type'];
+
+        $id = $request['id'];
+
+        if($type == 'shorts'){
+            $item = Short::find($id);
+        }
+
+        if($type == 'videos'){
+            $item = Video::find($id);
+        }
+
+
+        if($item){
+            $item->views = $item->views + 1;
+            $item->save();
+        }
+
+        return response()->json($item);
+    }
+
     public function increaseVideoView(Request $request): JsonResponse
     {
 
