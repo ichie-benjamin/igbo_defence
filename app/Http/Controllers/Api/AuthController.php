@@ -49,7 +49,7 @@ class AuthController extends Controller
 
 //            $data['password'] = bcrypt($data['password']);
 
-//            $data['name'] = $data['username'];
+            $data['name'] = $data['username'];
 
             $data['permission'] = 'user';
 
