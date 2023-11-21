@@ -223,7 +223,7 @@ class AuthController extends Controller
     protected function getData(Request $request)
     {
         $rules = [
-            'name' => 'required|max:50|min:3|unique:users',
+            'username' => 'required|max:50|min:3|unique:users,name',
             'first_name' => 'required|max:50|min:3',
             'last_name' => 'required|max:50|min:3',
             'phone' => 'nullable',
