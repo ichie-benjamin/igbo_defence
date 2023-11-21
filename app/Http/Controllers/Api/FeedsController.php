@@ -124,7 +124,7 @@ class FeedsController extends Controller
 
         return response()->json($item);
     }
-    public function increaseLike(Request $request): JsonResponse
+    public function toggleLike(Request $request): JsonResponse
     {
 
         $type = $request['type'];

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'v1/'], function () {
     Route::get('lives', [FeedsController::class, 'lives']);
 
     Route::post('increase/view', [FeedsController::class, 'increaseView']);
+    Route::post('toggle/like', [FeedsController::class, 'toggleLike']);
     Route::post('shorts/increase/view', [FeedsController::class, 'increaseShortsView']);
     Route::post('videos/increase/view', [FeedsController::class, 'increaseVideoView']);
 
