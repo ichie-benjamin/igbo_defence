@@ -36,25 +36,12 @@ class AuthController extends Controller
     public function register(Request $request): JsonResponse
     {
 
-        $request->validate([
-            'first_name' => 'required|max:50|min:2',
-            'last_name' => 'required|max:50|min:2',
-
-            'phone' => 'nullable',
-            'country_code' => 'nullable',
-            'country' => 'nullable',
-            'email' => 'required|max:50|email|unique:users',
-            'name' => 'required|max:50|unique:users',
-
-            'password' => 'required',
-
-            'referral'  => 'nullable',
-        ]);
-
         try {
+            $data = $this->getData($request);
+
             DB::beginTransaction();
 
-            $data = $this->getData($request);
+
 
 //            if($request->has('referral')){
 //                $data['referral'] =
