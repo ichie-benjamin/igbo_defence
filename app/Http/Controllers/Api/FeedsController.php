@@ -148,7 +148,7 @@ class FeedsController extends Controller
             $user->toggleLike($item);
         }
 
-        return response()->json($item);
+        return $this->successResponse('toggled like',$item);
     }
 
     public function increaseVideoView(Request $request): JsonResponse
