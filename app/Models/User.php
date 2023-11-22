@@ -36,7 +36,7 @@ class User extends Authenticatable
         'password',
     ];
 
-//    protected $appends = ['avatar'];
+    protected $appends = ['all_followings'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -65,5 +65,10 @@ class User extends Authenticatable
             return asset('images/logo.png');
         }
         return $value;
+    }
+
+    public function getAllFollowingsAttribute(): string
+    {
+        return $this->followings;
     }
 }
