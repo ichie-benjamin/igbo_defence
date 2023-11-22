@@ -54,9 +54,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function shorts(): BelongsTo
+    public function shorts(): HasMany
     {
-        return $this->belongsTo(Short::class);
+        return $this->hasMany(Short::class);
     }
 
     public function getAvatarAttribute($value): string
