@@ -5,14 +5,18 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Overtrue\LaravelFollow\Traits\Followable;
+use Overtrue\LaravelFollow\Traits\Follower;
 use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasUuids, Liker;
+    use HasApiTokens, HasFactory, Notifiable, HasUuids, Liker, Follower, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,7 +54,15 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function shorts(): BelongsTo
+    {
+        return $this->belongsTo(Short::class);
+    }
+
     public function getAvatarAttribute(){
-        return asset('images/logo.png');
+        if(!$this->avatar){
+            return asset('images/logo.png');
+        }
+        return $this->avatar;
     }
 }

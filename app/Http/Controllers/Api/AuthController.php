@@ -138,6 +138,18 @@ class AuthController extends Controller
         return  $this->successResponse('user details',$user);
     }
 
+    public function followUser(Request $request): JsonResponse
+    {
+        $user = User::find(auth()->id());
+
+        $user2 = $request['user_id'];
+
+        $status = $user->toggleFollow($user2);
+
+
+        return  $this->successResponse('user details',$status);
+    }
+
 
 
     public function update(Request $request): JsonResponse

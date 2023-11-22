@@ -87,6 +87,13 @@ class FeedsController extends Controller
         return response()->json($lives);
     }
 
+    public function userShorts($user_id): JsonResponse
+    {
+        $data = Short::where('user_id', $user_id)->paginate(12);
+
+        return response()->json($data);
+    }
+
     public function increaseShortsView(Request $request): JsonResponse
     {
 

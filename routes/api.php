@@ -37,6 +37,8 @@ Route::group(['prefix' => 'v1/'], function () {
 
         Route::post('user/update', [AuthController::class, 'update']);
 
+        Route::post('user/follow', [AuthController::class, 'followUser']);
+
         Route::post('verify/phone', [AuthController::class, 'verifyPhone']);
 
         Route::post('forgot/pass', [AuthController::class, 'forgotPass']);
@@ -59,6 +61,8 @@ Route::group(['prefix' => 'v1/'], function () {
     Route::get('feeds/shorts', [FeedsController::class, 'shorts']);
     Route::get('feeds/videos', [FeedsController::class, 'videos']);
     Route::get('lives', [FeedsController::class, 'lives']);
+
+    Route::get('user/shorts/{id}', [FeedsController::class, 'userShorts']);
 
     Route::post('increase/view', [FeedsController::class, 'increaseView']);
     Route::post('shorts/increase/view', [FeedsController::class, 'increaseShortsView']);
