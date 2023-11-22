@@ -10,12 +10,12 @@ class CreateFollowablesTable extends Migration
     {
         Schema::create(config('follow.followables_table', 'followables'), function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger(config('follow.user_foreign_key', 'user_id'))->index()->comment('user_id');
-            if (config('follow.uuids')) {
-                $table->uuidMorphs('followable');
-            } else {
-                $table->morphs('followable');
-            }
+
+            $table->uuid('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->uuidMorphs('followable');
 
             $table->timestamp('accepted_at')->nullable();
             $table->timestamps();
