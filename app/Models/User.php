@@ -69,6 +69,6 @@ class User extends Authenticatable
 
     public function getAllFollowingsAttribute(): string
     {
-        return $this->followings;
+        return $this->followings->pluck('followable_id');;
     }
 }
