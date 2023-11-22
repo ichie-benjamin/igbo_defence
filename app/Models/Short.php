@@ -15,7 +15,8 @@ class Short extends Model
 
     protected $fillable = ['title','user_id','status','description','file','tags'];
 
-    protected $appends = ['key','video','created_at_ago','view_count','likes'];
+    protected $appends = ['key','video','created_at_ago','view_count',
+        'likes', 'share_message_ios','share_message_android'];
 
     protected $with = ['user'];
 
@@ -38,6 +39,21 @@ class Short extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getShareMessageIosAttribute()
+    {
+        $message = "Download IGB App, for Online Newspaper;
+        Regional And World News, Docs,
+        iGD Views, Political Analysis Plus Special Reports";
+        return $message;
+    }
+    public function getShareMessageAndroidAttribute()
+    {
+        $message = "Download IGB App, for Online Newspaper;
+        Regional And World News, Docs,
+        iGD Views, Political Analysis Plus Special Reports";
+        return $message;
     }
 
     public function getKeyAttribute()
