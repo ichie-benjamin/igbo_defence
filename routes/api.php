@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ConfigController;
 use App\Http\Controllers\Api\FeedsController;
 use App\Http\Controllers\Api\MainController;
 use Illuminate\Http\Request;
@@ -61,6 +62,9 @@ Route::group(['prefix' => 'v1/'], function () {
     Route::get('feeds/shorts', [FeedsController::class, 'shorts']);
     Route::get('feeds/videos', [FeedsController::class, 'videos']);
     Route::get('lives', [FeedsController::class, 'lives']);
+
+    Route::get('/config/settings', [ConfigController::class, 'getSettings']);
+
 
     Route::get('user/shorts/{id}', [FeedsController::class, 'userShorts']);
 
