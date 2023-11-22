@@ -59,10 +59,11 @@ class User extends Authenticatable
         return $this->belongsTo(Short::class);
     }
 
-    public function getAvatarAttribute(){
-        if(!$this->avatar){
+    public function getAvatarAttribute($value): string
+    {
+        if(!$value){
             return asset('images/logo.png');
         }
-        return $this->avatar;
+        return $value;
     }
 }
