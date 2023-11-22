@@ -142,7 +142,11 @@ class AuthController extends Controller
     {
         $user = User::find(auth()->id());
 
-        $user2 = $request['user_id'];
+        $user2 = User::find($request['user_id']);
+
+        if(!$user2){
+            return $this->errorResponse('User not found');
+        }
 
         $status = $user->toggleFollow($user2);
 
