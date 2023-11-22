@@ -49,7 +49,7 @@ class AuthController extends Controller
 //                $data['referral'] =
 //            }
 
-//            $data['password'] = bcrypt($data['password']);
+            $data['password'] = bcrypt($data['password']);
 
             $data['name'] = $data['username'];
 
