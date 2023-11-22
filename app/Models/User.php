@@ -36,7 +36,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    protected $appends = ['all_followings'];
+    protected $appends = ['all_followings','followers_count','videos_count'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -69,6 +69,14 @@ class User extends Authenticatable
 
     public function getAllFollowingsAttribute()
     {
-        return $this->followings->pluck('followable_id');;
+        return $this->followings->pluck('followable_id');
+    }
+    public function getFollowersCountAttribute()
+    {
+        return $this->followers->count();
+    }
+    public function getVideosCountAttribute()
+    {
+        return $this->shorts()->count();
     }
 }
