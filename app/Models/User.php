@@ -36,7 +36,7 @@ class User extends Authenticatable
         'password',
     ];
 
-//    protected $appends = ['all_followings'];
+    protected $appends = ['all_followings'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -67,8 +67,8 @@ class User extends Authenticatable
         return $value;
     }
 
-//    public function getAllFollowingsAttribute(): string
-//    {
-//        return $this->followings;
-//    }
+    public function getAllFollowingsAttribute(): string
+    {
+        return $this->followings;
+    }
 }
